@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="google-site-verification" content="-edPGjeJeeIRb5AAnsek0yMbDxm_FLdyxPuZEi8k7vU" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horizon X - Your Universe of Entertainment</title>
@@ -83,6 +84,16 @@
         .navbar-hidden { opacity: 0; transform: translateY(-100%); }
         .navbar-visible { opacity: 1; transform: translateY(0); transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; }
 
+        /* Mobile nav specific styles */
+        .mobile-menu {
+            transition: max-height 0.3s ease-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        .mobile-menu.active {
+            max-height: 500px; /* Adjust based on content */
+        }
+
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans antialiased">
@@ -103,22 +114,44 @@
                     <img src="1i.png" alt="Horizon X Logo" class="h-8 mr-2 invert">
                     <span class="text-xl font-bold tracking-wider hidden sm:block">Horizon X</span>
                 </div>
-                <ul class="flex space-x-6 text-lg font-medium"> <!-- Increased text size -->
+
+                <!-- Hamburger Menu for Mobile -->
+                <div class="md:hidden">
+                    <button id="hamburger" class="text-gray-100 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <ul class="hidden md:flex space-x-6 text-lg font-medium">
                     <li><a href="#" class="hover:text-blue-400 transition duration-300">Gaming</a></li>
                     <li><a href="#" class="hover:text-blue-400 transition duration-300">Movies</a></li>
                     <li><a href="#" class="hover:text-blue-400 transition duration-300">Music</a></li>
                     <li><a href="#" class="hover:text-blue-400 transition duration-300">Community</a></li>
-                    <li><a href="#" class="px-4 py-2 hover:bg-blue-600 rounded-md transition duration-300">Sign Up/Login</a></li> <!-- Button style for login -->
+                    <li><a href="#" class="px-4 py-2 hover:bg-blue-600 rounded-md transition duration-300">Sign Up/Login</a></li>
+                </ul>
+            </div>
+            
+            <!-- Mobile Menu (hidden by default) -->
+            <div id="mobile-menu" class="mobile-menu md:hidden bg-gray-800 mt-4 rounded-md">
+                <ul class="flex flex-col items-center py-4 space-y-4">
+                    <li><a href="#" class="block text-lg font-medium hover:text-blue-400 transition duration-300">Gaming</a></li>
+                    <li><a href="#" class="block text-lg font-medium hover:text-blue-400 transition duration-300">Movies</a></li>
+                    <li><a href="#" class="block text-lg font-medium hover:text-blue-400 transition duration-300">Music</a></li>
+                    <li><a href="#" class="block text-lg font-medium hover:text-blue-400 transition duration-300">Community</a></li>
+                    <li><a href="#" class="block px-4 py-2 btn-gradient-blue text-white font-semibold rounded-full text-md shadow-lg">Sign Up/Login</a></li>
                 </ul>
             </div>
         </nav>
-
+        
         <div class="relative z-10 p-4">
             <!-- Logo in Hero -->
             <img src="1i.png" alt="Horizon X Logo" class="h-24 mx-auto mb-6 invert">
             <h1 class="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">Horizon X</h1>
             <p class="text-xl md:text-2xl text-gray-300 mb-8 font-light">Your Universe of Entertainment.</p>
-            <div class="flex justify-center space-x-6">
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
                 <button class="btn-gradient-blue text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300">Explore Gaming</button>
                 <button class="btn-gradient-green text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300">Discover Media</button>
             </div>
@@ -130,7 +163,8 @@
         <!-- Featured Content Carousel (Conceptual, actual carousel JS required) -->
         <section class="mb-16">
             <h2 class="text-4xl font-bold mb-8 text-center sm:text-left">Featured Content</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Adjusted grid for responsiveness: 1 column on small, 2 on medium, 3 on large -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Placeholder card 1 -->
                 <div class="relative group rounded-xl overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
                     <img src="https://via.placeholder.com/1920x1080/0d6efd/ffffff?text=Starfall+Odyssey" alt="Starfall Odyssey" class="w-full h-64 object-cover">
@@ -163,6 +197,7 @@
 
         <!-- What's New Sections -->
         <section class="mb-16">
+            <!-- Adjusted grid for responsiveness: 1 column on small, 3 on large -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <!-- Latest Games -->
                 <div>
@@ -244,6 +279,7 @@
         <!-- Editor's Picks -->
         <section class="mb-16 text-center">
             <h2 class="text-4xl font-bold mb-8 text-center sm:text-left">Editor's Picks</h2>
+            <!-- Adjusted grid for responsiveness: 1 column on small, 2 on medium, 3 on large -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
                 <!-- Editor's Pick Card 1 -->
                 <div class="card-gradient-border relative p-1 transition duration-300 hover:shadow-lg w-full max-w-sm">
@@ -251,7 +287,7 @@
                         <div class="mb-4">
                             <svg class="h-16 w-16 text-blue-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 00-8 8c0 2.92 1.487 5.753 4 7.426V18a1 1 0 001 1h6a1 1 0 001-1v-.574c2.513-1.673 4-4.506 4-7.426a8 8 0 00-8-8zm0 2a6 6 0 110 12h-1a1 1 0 000 2 1 1 0 000-2h1c3.313 0 6-2.687 6-6s-2.687-6-6-6z"></path></svg>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Top 10 Indie Games</h3>
+                        <h3 class="text-xl font-bold mb-2">Top 10 I Games</h3>
                         <p class="text-gray-400 text-sm mb-4">Hidden gems you need to play right now.</p>
                         <button class="btn-gradient-blue text-white font-semibold py-2 px-6 rounded-full text-sm">Explore</button>
                     </div>
@@ -286,12 +322,12 @@
 
     <!-- Footer -->
     <footer class="bg-gray-800 py-10 px-4 text-gray-400 text-sm">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-                <img src="1i.png" alt="Horizon X Logo" class="h-10 mb-4 invert">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="text-center md:text-left">
+                <img src="1i.png" alt="Horizon X Logo" class="h-10 mb-4 invert mx-auto md:mx-0">
                 <p>&copy; 2025 Horizon X. All rights reserved.</p>
             </div>
-            <div>
+            <div class="text-center md:text-left">
                 <h4 class="font-bold text-gray-200 mb-4">Quick Links</h4>
                 <ul>
                     <li class="mb-2"><a href="#" class="hover:text-blue-400 transition duration-300">About Us</a></li>
@@ -300,7 +336,7 @@
                     <li class="mb-2"><a href="#" class="hover:text-blue-400 transition duration-300">FAQ</a></li>
                 </ul>
             </div>
-            <div>
+            <div class="text-center md:text-left">
                 <h4 class="font-bold text-gray-200 mb-4">Legal</h4>
                 <ul>
                     <li class="mb-2"><a href="#" class="hover:text-blue-400 transition duration-300">Privacy Policy</a></li>
@@ -308,13 +344,13 @@
                     <li class="mb-2"><a href="#" class="hover:text-blue-400 transition duration-300">Cookie Policy</a></li>
                 </ul>
             </div>
-            <div>
+            <div class="text-center md:text-left">
                 <h4 class="font-bold text-gray-200 mb-4">Connect With Us</h4>
-                <div class="flex space-x-4 text-xl">
+                <div class="flex justify-center md:justify-start space-x-4 text-xl">
                     <a href="#" class="hover:text-blue-400 transition duration-300"><svg fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.877V14.37h-2.91V10.12h2.91V7.07c0-2.843 1.73-4.417 4.29-4.417 1.258 0 2.348.09 2.663.128v2.85l-1.685.001c-1.32.0-1.577.628-1.577 1.543V10.12h3.184l-.513 4.25h-2.671v7.127C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"></path></svg></a>
                     <a href="#" class="hover:text-blue-400 transition duration-300"><svg fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6"><path d="M22.254 5.922a.96.96 0 01-.274.654c-.112.1-.224.18-.344.24a.97.97 0 01-.524.168.96.96 0 01-.654-.274c-.1-.112-.18-.224-.24-.344a.97.97 0 01-.168-.524.96.96 0 01.274-.654c.112-.1.224-.18.344-.24a.97.97 0 01.524-.168.96.96 0 01.654.274c.1.112.18.224.24.344a.97.97 0 01.168.524zM24 4.309V19.7c0 2.21-1.79 4-4 4H4c-2.21 0-4-1.79-4-4V4.309c0-2.21 1.79-4 4-4h16c2.21 0 4 1.79 4 4zM8 12c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4zm8.991-6.19c-.318-.035-.615-.05-.9-.05h-10.182c-.285 0-.578.016-.893.05-.73.08-1.393.42-1.908.97a3.996 3.996 0 00-.97 1.908c-.035.315-.05.61-.05.893v10.182c0 .285.016.578.05.893.08.73.42 1.393.97 1.908a3.996 3.996 0 001.908.97c.315.035.61.05.893.05h10.182c.285 0 .578-.016.893-.05.73-.08 1.393-.42 1.908-.97a3.996 3.996 0 00.97-1.908c.035-.315.05-.61.05-.893V8.19c0-.285-.016-.578-.05-.893-.08-.73-.42-1.393-.97-1.908z"></path></svg></a>
                     <a href="#" class="hover:text-blue-400 transition duration-300"><svg fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.824 8.209 11.31.75.143 1.02-.328 1.02-.738V20.106c-3.141.705-3.812-1.873-3.812-1.873-.514-1.306-1.253-1.657-1.253-1.657-1.025-.697.08-.684.08-.684 1.135.08 1.733 1.169 1.733 1.169 1.005 1.724 2.635 1.229 3.275.932.102-.727.394-1.229.719-1.509-2.484-.283-5.09-1.242-5.09-5.525 0-1.22.423-2.222 1.115-3.003-.11-.285-.48-1.423.106-2.95 0 0 .91-.3 2.806 1.134.87-.242 1.79-.363 2.71-.363.92 0 1.84.121 2.71.363 1.89-1.434 2.8-1.134 2.8-1.134.58 1.527.21 2.665.1 2.95.692.781 1.116 1.783 1.116 3.003 0 4.301-2.614 5.234-5.101 5.517.378.327.72.97.72 1.962v2.906c0 .41.27.886 1.02.737C20.562 21.824 24 17.302 24 12c0-6.627-5.373-12-12-12z"></path></svg></a>
-                    <a href="#" class="hover:text-blue-400 transition duration-300"><svg fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6"><path d="M22.924 3.73a.857.857 0 00-.246-.576c-.097-.089-.204-.15-.316-.184a.86.86 0 00-.46-.035.857.857 0 00-.312.067.857.857 0 00-.27.184c-.097.089-.204.15-.316.184a.86.86 0 00-.46.035.857.857 0 00-.312-.067c-.097-.035-.194-.067-.291-.097a.86.86 0 00-.46-.035.857.857 0 00-.312.067c-.097.035-.194.067-.291.097a.86.86 0 00-.46-.035.857.857 0 00-.312.067c-.097.035-.194-.067-.291-.097a.86.86 0 00-.46-.035.857.857 0 00-.312.067c-.097.035-.194-.067-.291-.097a.86.86 0 00-.46-.035.857.857 0 00-.312.067c-.097.035-.194-.067-.291-.097a.86.86 0 00-.46-.035c-.097-.035-.194-.067-.291-.097a.86.86 0 00-.46-.035c-.097-.035-.194-.067-.291-.097a.86.86 0 00-.46-.035c-.097-.035-.194-.067-.291-.097A.86.86 0 004 0c-.86 0-1.785.17-2.61.5c-.825.33-1.46.77-1.92 1.32-.46.55-.73 1.07-.82 1.56-.09.49-.07 1.09-.07 1.77v14.12c0 .68-.02 1.28.07 1.77.09.49.36 1.01.82 1.56.46.55 1.09 1 1.92 1.32.825.33 1.75.5 2.61.5h16c.86 0 1.785-.17 2.61-.5.825-.33 1.46-.77 1.92-1.32.46-.55.73-1.07.82-1.56.09-.49.07-1.09.07-1.77V3.73zM5 19.5c.535 0 1.025-.098 1.47-.29.444-.192.83-.448 1.155-.768.324-.32.58-.707.772-1.152.191-.444.29-1 .29-1.55 0-.55-.099-1.05-.29-1.55-.192-.499-.448-.887-.772-1.21-.325-.324-.711-.58-1.155-.772-.445-.192-.935-.29-1.47-.29-.535 0-1.025.098-1.47.29-.444.192-.83.448-1.155.768-.324.32-.58.707-.772 1.152-.191.444-.29 1-.29 1.55 0 .55.099 1.05.29 1.55.192.499.448.887.772 1.21.325.324.711.58 1.155.772.445.192.935.29 1.47.29zM19 19.5c.535 0 1.025-.098 1.47-.29.444-.192.83-.448 1.155-.768.324-.32.58-.707.772-1.152.191-.444.29-1 .29-1.55 0-.55-.099-1.05-.29-1.55-.192-.499-.448-.887-.772-1.21-.325-.324-.711-.58-1.155-.772-.445-.192-.935-.29-1.47-.29-.535 0-1.025.098-1.47.29-.444.192-.83.448-1.155.768-.324.32-.58.707-.772 1.152-.191.444-.29 1-.29 1.55 0 .55.099 1.05.29 1.55.192.499.448.887.772 1.21.325.324.711.58 1.155.772.445.192.935.29 1.47.29zM12 21.5c-4.14 0-7.5-3.36-7.5-7.5s3.36-7.5 7.5-7.5 7.5 3.36 7.5 7.5-3.36 7.5-7.5 7.5z"></path></svg></a>
+                    <a href="#" class="hover:text-blue-400 transition duration-300"><svg fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6"><path d="M22.924 3.73a.857.857 0 00-.246-.576c-.097-.089-.204-.15-.316-.184a.86.86 0 00-.46-.035.857.857 0 00-.312.067.857.857 0 00-.27.184c-.097.089-.204.15-.316.184a.86.86 0 00-.46.035.857.857 0 00-.312-.067c-.097-.035-.194-.067-.291-.097a.86.86 0 00-.46-.035.857.857 0 00-.312.067c-.097.035-.194-.067-.291-.097a.86.86 0 00-.46-.035.857.857 0 00-.312.067c-.097.035-.194-.067-.291-.097a.86.86 0 00-.46-.035.857.857 0 00-.312.067c-.097.035-.194-.067-.291-.097a.86.86 0 00-.46-.035c-.097-.035-.194-.067-.291-.097a.86.86 0 00-.46-.035c-.097-.035-.194-.067-.291-.097A.86.86 0 004 0c-.86 0-1.785.17-2.61.5c-.825.33-1.46.77-1.92 1.32-.46.55-.73 1.07-.82 1.56-.09.49-.07 1.09-.07 1.77v14.12c0 .68-.02 1.28.07 1.77.09.49.36 1.01.82 1.56.46.55 1.09 1 1.92 1.32.825.33 1.75.5 2.61.5h16c.86 0 1.785-.17 2.61-.5.825-.33 1.46-.77 1.92-1.32.46-.55.73-1.07.82-1.56.09-.49.07-1.09.07-1.77V3.73zM5 19.5c.535 0 1.025-.098 1.47-.29.444-.192.83-.448 1.155-.768.324-.32.58-.707.772-1.152.191-.444.29-1 .29-1.55 0-.55-.099-1.05-.29-1.55-.192-.499-.448-.887-.772-1.21-.325-.324-.711-.58-1.155-.772-.445-.192-.935-.29-1.47-.29-.535 0-1.025.098-1.47.29-.444.192-.83.448-1.155.768-.324.32-.58.707-.772 1.152-.191.444-.29 1-.29 1.55 0 .55.099 1.05.29 1.55.192.499.448.887.772 1.21.325.324.711.58 1.155.772.445.192.935.29 1.47.29zM19 19.5c.535 0 1.025-.098 1.47-.29.444-.192.83-.448 1.155-.768.324-.32.58-.707.772-1.152.191-.444.29-1 .29-1.55 0-.55-.099-1.05-.29-1.55-.192-.499-.448-.887-.772-1.21-.325-.324-.711-.58-1.155-.772-.445-.192-.935-.29-1.47-.29-.535 0-1.025.098-1.47.29-.444.192-.83.448-1.155.768-.324.32-.58.707-.772 1.152-.191.444-.29 1-.29 1.55 0 .55.099 1.05.29 1.55.192.499.448.887.772 1.21.325.324.711.58 1.155.772.445.192.935.29 1.47.29zM12 21.5c-4.14 0-7.5-3.36-7.5-7.5s3.36-7.5 7.5-7.5 7.5 3.36 7.5 7.5-3.36 7.5-7.5 7.5z"></path></svg></a>
                     <a href="#" class="hover:text-blue-400 transition duration-300"><svg fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c1.78 1.1 3.96 1.75 6.27 1.75 8.1 0 12.54-6.79 12.54-12.72v-.5A9.01 9.01 0 0023 3z"></path></svg></a>
                     <a href="#" class="hover:text-blue-400 transition duration-300"><svg fill="currentColor" viewBox="0 0 24 24" class="h-6 w-6"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14h3v-8h-3v8zm4-8h3V6h-3v2z"></path></svg></a>
                 </div>
@@ -358,6 +394,21 @@
         } else {
              navbar.classList.add('bg-transparent');
         }
+
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
 
         // Basic carousel functionality (if you implement a full carousel library like Swiper/Slick, you'd initialize it here)
         // For the sake of simplicity and no external libraries, this example does not include an advanced carousel.
